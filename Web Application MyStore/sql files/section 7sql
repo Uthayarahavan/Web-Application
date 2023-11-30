@@ -1,0 +1,57 @@
+CREATE OR REPLACE PROCEDURE display_books_in_genre(p_genre VARCHAR2) AS
+    -- Declare a cursor with a parameter
+    CURSOR book_cursor (genre_param VARCHAR2) IS
+        SELECT book_title, author
+        FROM master_books
+        WHERE genre = genre_param;
+    -- Declare variables to store cursor results
+    v_book_title master_books.book_title%TYPE;
+    v_author master_books.author%TYPE;
+BEGIN
+    -- Open the cursor with the specified genre
+    OPEN book_cursor(p_genre);
+    -- Fetch and display book details
+    LOOP
+        FETCH book_cursor INTO v_book_title, v_author;
+        EXIT WHEN book_cursor%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE('Book Title: ' || v_book_title || ', Author: ' || v_author);
+    END LOOP;
+    -- Close the cursor
+    CLOSE book_cursor;
+END display_books_in_genre;
+/
+BEGIN
+    display_books_in_genre('Fiction');
+END;
+
+CREATE OR REPLACE PROCEDURE execute_dynamic_query(p_sql_query VARCHAR2) AS
+    -- Declare a cursor for dynamic SQL
+    TYPE QueryCursor IS REF CURSOR;
+    v_result_cursor QueryCursor;
+
+    -- Declare variables for dynamic SQL
+    v_query VARCHAR2(4000);
+    v_column1 NUMBER;
+    v_column2 VARCHAR2(100);
+BEGIN
+    -- Build the dynamic SQL query
+    v_query := p_sql_query;
+    -- Open the dynamic SQL cursor
+    OPEN v_result_cursor FOR v_query;
+
+    -- Fetch and display results
+    LOOP
+        FETCH v_result_cursor INTO v_column1, v_column2;
+        EXIT WHEN v_result_cursor%NOTFOUND;
+
+        DBMS_OUTPUT.PUT_LINE('Column1: ' || v_column1 || ', Column2: ' || v_column2);
+    END LOOP;
+
+    -- Close the dynamic SQL cursor
+    CLOSE v_result_cursor;
+END execute_dynamic_query;
+/
+BEGIN
+    execute_dynamic_query('SELECT book_id, book_title FROM master_books WHERE genre = ''Fiction''');
+END;
+

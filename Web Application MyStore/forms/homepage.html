@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to My Store</title>
+    <link rel="stylesheet" href="user.css">
+    <style>
+        body {
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+        }
+
+        .content {
+            background-color: #82a7eb;
+            padding: 20px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #b1c0e1;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: 2px solid #feeb44;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: #8eef6e;
+            color: #333;
+        }
+
+        header {
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            padding: 20px;
+            position: relative;
+            text-align: center;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        #logo img {
+            width: 200px;
+            height: auto;
+        }
+
+        #description {
+            max-width: 600px;
+            background: linear-gradient(to right, #feeb44, #076aff);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            color: #fff;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        .navbar {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+        }
+
+        .navbar li {
+            padding: 10px 20px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #000808;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        .featured-section {
+            padding: 40px 0;
+            background-image: url('backgroundmiddle.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+        .featured-heading {
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .featured-products {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .featured-product {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 250px;
+        }
+
+        .featured-product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-image {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 10px;
+            background-color: #f2f2f2;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .product-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-size: 16px;
+            color: #007BFF;
+        }
+
+        .buy-button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .buy-button:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #333;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .featured-product {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="logo">
+            <img src="my-store-logo-1.c9fa6c6d.png" alt="Store Logo">
+        </div>
+        <div id="description">
+            <p style="color: #000000;">The MyStore – Welcome to MyStore, your one-stop destination for all your shopping needs! Discover a world of books, movies, products, courses, restaurants, and more, all in one convenient app. Whether you're a bookworm, a movie enthusiast, a tech geek, a foodie, or someone looking to enhance your skills, MyStore has something for everyone.</p>
+        </div>
+        <nav>
+            <ul class="navbar">
+                <li><a href="Books/books_list.html">Books</a></li>
+                <li><a href="movie/movie_list.html">Movies</a></li>
+                <li><a href="restaurants/restaurants_list.html">Restaurants</a></li>
+                <li><a href="courses/course_list.html">Courses</a></li>
+                <li><a href="products/product_list.html">Products</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="content">
+        <div class="featured-section">
+            <h2 class="featured-heading">Featured Products</h2>
+            <div class="featured-products">
+                <div class="featured-product">
+                    <div class="product-image">
+                        <img src="bestsellers_books.webp" alt="Product 1">
+                    </div>
+                    <div class="product-title">Featured Books</div>
+                    <div class="product-price">₹1979.99</div>
+                    <button class="buy-button">Buy Now</button>
+                </div>
+
+                <div class="featured-product">
+                    <div class="product-image">
+                        <img src="bestselling-products.webp" alt="Product 2">
+                    </div>
+                    <div class="product-title">Bestselling Products</div>
+                    <div class="product-price">₹245.99</div>
+                    <button class="buy-button">Buy Now</button>
+                </div>
+
+                <div class="featured-product">
+                    <div class="product-image">
+                        <img src="movie.webp" alt="Product 3">
+                    </div>
+                    <div class="product-title">Top-Rated Movie</div>
+                    <div class="product-price">₹290.99</div>
+                    <button class="buy-button">Buy Now</button>
+                </div>
+
+                <div class="featured-product">
+                    <div class="product-image">
+                        <img src="course.jpg" alt="Product 4">
+                    </div>
+                    <div class="product-title">Popular Course</div>
+                    <div class="product-price">₹1900.99</div>
+                    <button class="buy-button">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 My Store. All rights reserved.</p>
+    </footer>
+</body>
+</html>

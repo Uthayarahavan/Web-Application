@@ -1,0 +1,36 @@
+SELECT tb.*, mb.*
+FROM transactions_books tb
+INNER JOIN master_books mb ON tb.book_id = mb.book_id;
+
+SELECT u.username, u.first_name, u.last_name, tb.transaction_id, tb.transaction_date, mb.book_title, mb.price
+FROM users u
+LEFT JOIN transactions_books tb ON u.username = tb.username
+LEFT JOIN master_books mb ON tb.book_id = mb.book_id;
+
+SELECT t.*, c.*, u.*
+FROM transactions_courses t
+INNER JOIN master_courses c ON t.course_id = c.course_id
+INNER JOIN users u ON t.username = u.username;
+
+SELECT u.username, u.first_name, u.last_name, COALESCE(SUM(t.purchase_price), 0) AS total_spent
+FROM users u
+LEFT JOIN (
+    SELECT username, purchase_price
+    FROM transactions_books
+    UNION ALL
+    SELECT username, purchase_price
+    FROM transactions_movies
+    UNION ALL
+    SELECT username, purchase_price
+    FROM transactions_products
+    UNION ALL
+    SELECT username, purchase_price
+    FROM transactions_courses
+    UNION ALL
+    SELECT username, total_bill AS purchase_price
+    FROM transactions_restaurants
+    UNION ALL
+    SELECT username, amount AS purchase_price
+    FROM transactions_miscellaneous
+) t ON u.username = t.username
+GROUP BY u.username, u.first_name, u.last_name;

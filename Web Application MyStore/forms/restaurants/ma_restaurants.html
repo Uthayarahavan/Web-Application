@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f6f6f6;
+            font-family: Arial, sans-serif;
+        }
+        .restaurant-form {
+            background-color: #fff;
+            box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
+            width: 300px;
+            padding: 50px;
+            border-radius: 20px;
+        }
+        .restaurant-form label {
+            font-weight: bold;
+        }
+        .restaurant-form input[type="text"],
+        .restaurant-form input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .restaurant-form input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .restaurant-form input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="restaurant-form">
+        <h2>Add Restaurant Details</h2>
+        <form action="add_restaurant.php" method="POST">
+            <label for="restaurantName">Restaurant Name:</label>
+            <input type="text" id="restaurantName" name="restaurantName" required><br>
+
+            <label for="rating">Rating:</label>
+            <input type="number" id="rating" name="rating" step="0.1" min="0" max="5" required><br>
+
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" required><br>
+
+            <label for="cuisine">Cuisine:</label>
+            <input type="text" id="cuisine" name="cuisine" required><br>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required></textarea><br>
+
+            <label for="priceRange">Price Range:</label>
+            <input type="text" id="priceRange" name="priceRange" required><br>
+
+            <input type="submit" value="Add Restaurant">
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Transaction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ead7d7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #d1e174;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 50px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Enroll in Course</h2>
+        <form method="POST">
+            <label for="courseName">Course Name:</label>
+            <select id="courseName" name="courseName" required>
+                <option value="Course 1">Course 1 (Price: $100)</option>
+                <option value="Course 2">Course 2 (Price: $150)</option>
+                <!-- Add more course options here -->
+            </select><br>
+
+            <label for="coursePrice">Course Price (INR):</label>
+            <input type="number" id="coursePrice" name="coursePrice" readonly><br>
+
+            <label for="paymentMethod">Payment Method:</label>
+            <select id="paymentMethod" name="paymentMethod">
+                <option value="credit_card">Credit Card</option>
+                <option value="debit_card">Debit Card</option>
+                <option value="paypal">PayPal</option>
+                <option value="upi">UPI</option>
+            </select><br>
+
+            <input type="submit" value="Pruchase">
+        </form>
+
+        <p>Return to <a href="course_list.html">Homepage</a></p>
+    </div>
+</body>
+</html>

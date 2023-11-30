@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Movie</title>
+    <style>
+        /* Embedded CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #5e6182;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #b14949;
+            color: #6c3737;
+            padding: 10px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        header p {
+            margin: 5px 0;
+        }
+
+        header a {
+            text-decoration: none;
+            background-color: #4c52fe;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            margin: 10px;
+        }
+
+        header a:hover {
+            background-color: #555;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        #add-movie {
+            background-color: #cad8d0;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(203, 19, 223, 0.2);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4c52fe;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Movie Central</h1>
+        <p>Your One-Stop Destination for Movies</p>
+    </header>
+    <main>
+        <section id="add-movie">
+            <h2>Add a New Movie</h2>
+            <form id="add-movie-form" action="http://localhost:3000/submit-movie" method="POST" class="form">
+                <label for="movie_title">Movie Title:</label>
+                <input type="text" id="movie_title" name="movie_title" required><br><br>
+
+                <label for="director">Director:</label>
+                <input type="text" id="director" name="director"><br><br>
+
+                <label for="release_date">Release Date:</label>
+                <input type="date" id="release_date" name="release_date" required><br><br>
+
+                <label for="genre">Genre:</label>
+                <input type="text" id="genre" name="genre"><br><br>
+
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" step="0.01" required><br><br>
+                
+                <input type="submit" value="Add Movie">
+            </form>
+            
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Movie Central</p>
+    </footer>
+</body>
+</html>

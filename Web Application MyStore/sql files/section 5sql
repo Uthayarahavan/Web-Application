@@ -1,0 +1,37 @@
+CREATE VIEW book_transactions_view AS
+SELECT t.transaction_id, t.username, t.transaction_date, b.book_title, b.genre, t.purchase_price
+FROM transactions_books t
+JOIN master_books b ON t.book_id = b.book_id;
+
+CREATE VIEW movies_transactions_view AS
+SELECT
+    tm.transaction_id,
+    tm.username,
+    m.movie_id,
+    m.movie_title,
+    m.director,
+    tm.transaction_date,
+    tm.purchase_price
+FROM
+    transactions_movies tm
+JOIN
+    master_movies m ON tm.movie_id = m.movie_id;
+UPDATE movies_transactions_view
+SET purchase_price = purchase_price * 1.1
+WHERE EXISTS (
+    SELECT 1
+    FROM transactions_movies tm
+    JOIN master_movies m ON tm.movie_id = m.movie_id
+    WHERE movies_transactions_view.transaction_id = tm.transaction_id
+      AND m.genre = 'Sci-Fi'
+); 
+
+CREATE VIEW product_summary_view AS
+SELECT product_id, COUNT(*) as transaction_count, AVG(purchase_price) as avg_price
+FROM transactions_products
+GROUP BY product_id;
+
+DROP VIEW IF EXISTS course_summary_view;
+
+ALTER VIEW user_summary_view
+ADD COLUMN total_purchases NUMBER(10, 2);

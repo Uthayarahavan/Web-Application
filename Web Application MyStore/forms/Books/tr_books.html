@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Transaction Details</title>
+    <style>
+       /* General styles for the forms and container */
+.container {
+    max-width: 400px;
+    padding: 20px;
+    background-color: rgba(238, 81, 225, 0.2);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(2, 0, 0, 0.1);
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 20px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Label and input field styles */
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #c85757;
+    border-radius: 3px;
+}
+
+/* Textarea style for description */
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #6ea0cf;
+    border-radius: 3px;
+    resize: vertical;
+}
+
+/* Submit button styles */
+input[type="submit"] {
+    background-color: #25980b;
+    color: #351616;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #5b85b1;
+}
+ /* Your CSS styles here */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Purchase Book</h2>
+        <form action="add_transaction_details.php" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="user_id" name="user_id" required><br>
+
+            <label for="transaction_date">Transaction Date:</label>
+            <input type="date" id="transaction_date" name="transaction_date" required><br>
+
+            <label for="purchase_price">Purchase Price:</label>
+            <input type="number" id="purchase_price" name="purchase_price" step="0.01" required><br>
+
+            <!-- Add more fields as needed for your specific transaction details -->
+
+            <input type="submit" value="buy">
+        </form>
+    </div>
+</body>
+</html>

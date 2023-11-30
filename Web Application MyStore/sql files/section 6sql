@@ -1,0 +1,56 @@
+CREATE OR REPLACE PROCEDURE update_movie_price(p_movie_id NUMBER, p_new_price NUMBER) AS
+BEGIN
+    -- Update the price of a movie in the master_movies table
+    UPDATE master_movies
+    SET price = p_new_price
+    WHERE movie_id = p_movie_id;
+
+    -- Display a message indicating the update
+    DBMS_OUTPUT.PUT_LINE('Movie price updated successfully.');
+END update_movie_price;
+
+BEGIN
+    update_movie_price(1, 16.99);
+END;
+
+
+CREATE OR REPLACE FUNCTION get_total_spending(p_username VARCHAR2) RETURN NUMBER AS
+    v_total_spending NUMBER(10, 2) := 0;
+BEGIN
+    -- Calculate spending on books
+    SELECT NVL(SUM(purchase_price), 0)
+    INTO v_total_spending
+    FROM transactions_books
+    WHERE username = p_username;
+    -- Calculate spending on movies
+    SELECT v_total_spending + NVL(SUM(purchase_price), 0)
+    INTO v_total_spending
+    FROM transactions_movies
+    WHERE username = p_username;
+    -- Calculate spending on products
+    SELECT v_total_spending + NVL(SUM(purchase_price), 0)
+    INTO v_total_spending
+    FROM transactions_products
+    WHERE username = p_username;
+    -- Calculate spending on courses
+    SELECT v_total_spending + NVL(SUM(purchase_price), 0)
+    INTO v_total_spending
+    FROM transactions_courses
+    WHERE username = p_username;
+    -- Calculate spending on restaurants
+    SELECT v_total_spending + NVL(SUM(total_bill), 0)
+    INTO v_total_spending
+    FROM transactions_restaurants
+    WHERE username = p_username;
+    -- Calculate spending on miscellaneous items
+    SELECT v_total_spending + NVL(SUM(amount), 0)
+    INTO v_total_spending
+    FROM transactions_miscellaneous
+    WHERE username = p_username;
+    -- Return the total spending
+    RETURN v_total_spending;
+END get_total_spending;
+/
+SELECT get_total_spending('user1') AS total_spending FROM DUAL;
+
+

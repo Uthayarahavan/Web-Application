@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f6f6f6;
+            font-family: Arial, sans-serif;
+        }
+
+        .course-card {
+            background-color: #fff;
+            box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
+            width: 300px;
+            height: 750px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            margin: 20px; /* Added margin for separation */
+        }
+
+        .course-card img {
+            width: 100%;
+            height: 50%; /* Limiting the height of the image */
+        }
+
+        .course-info {
+            padding: 20px;
+        }
+
+        .course-info h2 {
+            margin-bottom: 10px;
+        }
+
+        .buy-button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            margin-top: auto; /* Pushes the button to the bottom */
+        }
+
+        .buy-button:hover {
+            background-color: #0056b3;
+        }
+
+        .add-course-tab {
+            background-color: #ff47f3;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            margin: 20px; /* Adjust margin as needed */
+            display: inline-block; /* Ensures it appears inline with the course cards */
+        }
+
+        .add-course-tab:hover {
+            background-color: #1911b0;
+        }
+    </style>
+</head>
+<body>
+    <div class="course-card">
+        <img src="datascience.jpg" alt="Data Science Course Image">
+        <div class "course-info">
+            <h2>Data Science</h2>
+            <p>Instructor: Harvard University</p>
+            <p>Category: Data Science</p>
+            <p>Platform: edX</p>
+            <p>Description: Study programs in data science typically focus on big data analytics, data visualization, statistics, and predictive analytics.</p>
+            <p>Price: $99</p>
+            <button class="buy-button"><a href="tra_courses.html">Buy Now</a></button>
+        </div>
+    </div>
+
+    <div class="course-card">
+        <img src="learnhowtol.webp" alt="Learning How to Learn Course Image">
+        <div class="course-info">
+            <h2>Learning How to Learn</h2>
+            <p>Instructor: Deep Teaching Solutions</p>
+            <p>Category: Personal Development</p>
+            <p>Platform: Coursera</p>
+            <p>Description: Powerful mental tools to help you master tough subjects.</p>
+            <p>Price: Free</p>
+            <button class="buy-button"><a href="tra_courses.html">Enroll Now</a></button>
+        </div>
+    </div>
+
+    <a href="ma_courses.html" class="add-course-tab">Add Course</a>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <script defer src="login.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #ff9595, #f76d6d);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: linear-gradient(to bottom, #eafebb, #c5f0a5);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Added box shadow for depth */
+            padding: 50px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease; /* Added a subtle scale-up animation */
+        }
+
+        .container:hover {
+            transform: scale(1.02); /* Scale up on hover for a subtle effect */
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px; /* Increased padding for a more comfortable input */
+            margin: 20px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px; /* Rounded corners for a softer look */
+            transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Added box shadow and transition */
+            background: linear-gradient(to bottom, #fff, #f9f9f9);
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Highlight on focus */
+        }
+
+        input[type="submit"] {
+            background: linear-gradient(to bottom, #3498db, #2980b9);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 10px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease; /* Added scale-down animation on hover */
+        }
+
+        input[type="submit"]:hover {
+            background: linear-gradient(to bottom, #2980b9, #2579a9);
+            transform: scale(0.98); /* Scale down on hover for a button press effect */
+        }
+
+        p {
+            margin-top: 15px; /* Increased margin for better spacing */
+            color: #888;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="my-store-logo-1.c9fa6c6d.png" alt="Login" width="150" height="45">
+        <h2>Login</h2>
+        <form action="/login" method="POST">
+            <label for="username">User ID:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <input type="submit" value="Login">
+        </form>
+
+        <a href="forgot-password.html">Forgot Password?</a>
+        <p>Don't have an account? <a href="registration.html">Register here</a></p>
+
+        <div>
+            <p>Or login with:</p>
+            <button>Facebook</button>
+            <button>Google</button>
+            <button>Twitter</button>
+        </div>
+    </div>
+</body>
+</html>

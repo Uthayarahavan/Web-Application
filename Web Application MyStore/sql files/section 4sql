@@ -1,0 +1,28 @@
+SELECT username
+FROM transactions_books
+WHERE book_id IN (SELECT book_id FROM master_books WHERE genre = 'Fiction');
+
+SELECT username, COUNT(*) as transaction_count
+FROM transactions_movies
+WHERE movie_id IN (SELECT movie_id FROM master_movies WHERE genre = 'Action')
+GROUP BY username;
+
+SELECT product_name, price,
+  (SELECT AVG(price) FROM master_products) as avg_product_price
+FROM master_products;
+
+SELECT u.username, u.first_name, u.last_name
+FROM users u
+WHERE EXISTS (
+    SELECT 1
+    FROM transactions_books tb
+    WHERE tb.username = u.username
+);
+
+SELECT username, course_id, transaction_date
+FROM transactions_courses
+WHERE transaction_date = (
+    SELECT MAX(transaction_date)
+    FROM transactions_courses
+    WHERE course_id = 1
+);

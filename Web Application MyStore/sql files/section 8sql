@@ -1,0 +1,103 @@
+CREATE TABLE audit_table (
+    audit_id NUMBER PRIMARY KEY,
+    table_name VARCHAR2(50),
+    operation VARCHAR2(10),
+    timestamp TIMESTAMP
+);
+
+CREATE OR REPLACE TRIGGER master_books_audit_trigger
+BEFORE INSERT OR UPDATE OR DELETE
+ON master_books
+FOR EACH ROW
+DECLARE
+    operation VARCHAR2(10);
+BEGIN
+    IF INSERTING THEN
+        operation := 'INSERT';
+    ELSIF UPDATING THEN
+        operation := 'UPDATE';
+    ELSIF DELETING THEN
+        operation := 'DELETE';
+    END IF;
+
+    INSERT INTO audit_table (table_name, operation, timestamp)
+    VALUES ('MASTER_BOOKS', operation, SYSTIMESTAMP);
+END;
+/
+ROLLBACK;
+-- Insert
+INSERT INTO master_books (book_id, book_title, author, publication_date, genre, price)
+VALUES
+    (8, 'Book Title 8', 'Author A', '15-05-2022', 'Fiction', 79.99);
+-- Update
+UPDATE master_books SET author = 'NewAuthor' WHERE book_id = 1;
+
+SELECT * FROM audit_table;
+-- Delete
+DELETE FROM master_books WHERE book_id = 8;
+SELECT * FROM audit_table;
+
+CREATE OR REPLACE TRIGGER master_movies_output_trigger
+BEFORE INSERT OR UPDATE OR DELETE
+ON master_movies
+FOR EACH ROW
+BEGIN
+    DECLARE
+        operation VARCHAR2(10);
+    BEGIN
+        IF INSERTING THEN
+            operation := 'INSERT';
+        ELSIF UPDATING THEN
+            operation := 'UPDATE';
+        ELSIF DELETING THEN
+            operation := 'DELETE';
+        END IF;
+
+        -- Display output in the console
+        DBMS_OUTPUT.PUT_LINE('Table: MASTER_MOVIES, Operation: ' || operation || ', Timestamp: ' || TO_CHAR(SYSTIMESTAMP, 'YYYY-MM-DD HH24:MI:SS'));
+    END;
+END;
+/
+
+-- Enable DBMS_OUTPUT for displaying output in SQL*Plus or SQLcl
+SET SERVEROUTPUT ON;
+
+-- Insert a record into the main table
+
+INSERT INTO master_movies (movie_id, movie_title, director, release_date, genre, price)
+VALUES
+    (76, 'Movie Title 8', 'Director r', '10-04-2023', 'Drama', 199.99);
+-- Update a record in the main table
+UPDATE master_movies SET movie_title = 'Updated Movie' WHERE movie_id = 76;
+
+-- Delete a record from the main table
+DELETE FROM master_movies WHERE movie_id = 76;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
